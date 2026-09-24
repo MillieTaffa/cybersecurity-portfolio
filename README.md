@@ -1,40 +1,45 @@
 # SentinelScanner
 
-SentinelScanner is a beginner-friendly cybersecurity assessment project. It focuses on a small and safe security workflow:
+A beginner-friendly cybersecurity assessment project built to demonstrate how a modular security scanner works in a safe, local environment.
 
-- analyse a suspicious URL
-- look for SQL injection patterns in a controlled lab
-- check a few security settings
-- store the findings in SQLite
-- show them in a simple dashboard
-- explain what was found and how to fix it
+## Overview
 
-This project is intentionally small, clear, and safe. It is designed to help you learn how a modular security scanner works without jumping into huge enterprise systems.
+SentinelScanner helps you:
 
-## Why this project exists
+- analyse suspicious URLs
+- detect SQL injection patterns in a controlled lab
+- check basic security configuration problems
+- store findings in SQLite
+- generate a readable report
+- display results in a simple dashboard
+- verify whether a fix actually resolved the issue
 
-A good security scanner should do more than say "something is wrong". It should explain:
+This project is intentionally small and practical. It is designed to teach the core ideas behind security detection without becoming an oversized or unrealistic security platform.
 
-- what was detected
-- where it was detected
-- why it matters
+## Why this project matters
+
+A real scanner should do more than say, “This is bad.” It should explain:
+
+- what was found
+- where it was found
+- why it is risky
 - how serious it is
-- what evidence supports the finding
+- how confident the scanner is
+- what evidence supports the result
 - how to fix it
-- whether the problem still exists after remediation
+- whether the issue is still present after remediation
 
-That is the heart of SentinelScanner.
+This is the heart of SentinelScanner.
 
 ## Project goals
 
-- detect suspicious URLs
-- detect unsafe SQL pattern usage in a controlled environment
-- check configuration weaknesses
-- assign severity and confidence levels
-- store findings in a database
-- generate a readable report
-- show results in a simple dashboard
-- demonstrate remediation and re-test
+- detect suspicious URL patterns
+- detect unsafe SQL handling in a controlled application
+- check a few insecure configuration settings
+- classify severity and confidence
+- save findings in a database
+- show results in a dashboard
+- demonstrate remediation and re-testing
 
 ## Project structure
 
@@ -61,7 +66,6 @@ cybersecurity-portfolio/
 │   └── app.py
 ├── database/
 │   ├── schema.sql
-│   └── sentinelscanner.db
 ├── tests/
 │   ├── test_phishing.py
 │   ├── test_sqli.py
@@ -94,15 +98,13 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-If you are running tests from the project root, Python should now automatically include the project root because of the test configuration.
-
-### 3. Run tests
+### 3. Run the tests
 
 ```bash
 pytest
 ```
 
-### 4. Run the scanner from Python
+### 4. Run a sample scan from Python
 
 ```bash
 python - <<'PY'
@@ -128,35 +130,35 @@ streamlit run dashboard/app.py
 
 Then open the local URL shown in the terminal.
 
-## Safety and scope
+## Safety and allowed use
 
-This project is only meant for:
+This project is intended only for:
 
 - your own machine
 - a local lab
-- deliberately vulnerable sample code
+- intentionally vulnerable sample code
 - explicitly authorised testing
 
-This project does not scan random public websites or attack external systems.
+It should not be used to scan random public websites or attack third-party systems without permission.
 
-## Beginner explanation
+## Beginner-friendly workflow
 
 Think of SentinelScanner like this:
 
-1. A target is given to the scanner.
-2. The scanner chooses detectors.
-3. Each detector looks for one class of issue.
-4. Every detector creates a standard finding object.
-5. The findings are stored in SQLite.
+1. A target is provided.
+2. The scanner runs one or more detectors.
+3. Each detector checks a specific type of issue.
+4. Each detector creates a standard finding object.
+5. Findings are stored in SQLite.
 6. A report and dashboard make the results readable.
 7. A fix is applied.
-8. The scanner runs again to check whether the issue is resolved.
+8. The scanner runs again to confirm the issue has been resolved.
 
 ## Main ideas in the code
 
 ### Finding model
 
-Each detector returns a finding with the same structure:
+Every detector returns a finding with the same structure:
 
 - detector name
 - title
@@ -169,40 +171,42 @@ Each detector returns a finding with the same structure:
 - recommendation
 - status
 
-This makes the project modular.
+This keeps the code modular and consistent.
 
 ### Risk engine
 
-The risk engine decides how serious something is. Severity is about impact, while confidence is about how sure the detector is.
+The risk engine decides how serious the issue is. Severity tells you impact, while confidence tells you how certain the detector is that the issue is real.
 
-### Database
+### Database layer
 
-Findings are saved to SQLite so the project can show history and re-test behaviour.
+Findings are stored in SQLite so the scanner can keep a record of detections and re-test behaviour.
 
 ### Dashboard
 
-The dashboard is only a front-end layer. It does not decide whether something is a security issue; the detectors do.
+The dashboard is only a visual layer. It does not decide whether something is a security issue; the detectors do.
 
 ## Example scenario
 
-- A suspicious URL is analysed
+A typical workflow looks like this:
+
+- a suspicious URL is analysed
 - a phishing-style finding is created
 - a SQL injection pattern is detected in a local app
-- a weak security configuration is flagged
-- all findings are stored
+- a weak configuration is flagged
+- all findings are saved to SQLite
 - the report is generated
-- the dashboard displays the results
+- the dashboard shows the results
 
 ## Future ideas
 
-This MVP intentionally stays focused. Possible future work includes:
+This MVP stays focused on a simple and useful set of checks. Possible future upgrades include:
 
-- XSS checks
-- CSRF checks
-- API security rules
+- XSS detection
+- CSRF detection
+- API security checks
 - secret scanning
 - container vulnerability checks
-- cloud configuration review
+- cloud configuration validation
 - more advanced dashboards and alerts
 
 ## License
