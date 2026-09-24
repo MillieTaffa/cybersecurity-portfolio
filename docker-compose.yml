@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  vulnerable_app:
+    build: .
+    ports:
+      - "8001:8001"
+    command: python lab/vulnerable_app/app.py
