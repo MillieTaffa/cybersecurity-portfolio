@@ -94,6 +94,8 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+If you are running tests from the project root, Python should now automatically include the project root because of the test configuration.
+
 ### 3. Run tests
 
 ```bash
