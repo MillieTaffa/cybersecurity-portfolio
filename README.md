@@ -46,6 +46,8 @@ This is the heart of SentinelScanner.
 ```text
 cybersecurity-portfolio/
 ├── README.md
+├── USER_MANUAL.md
+├── LICENSE
 ├── requirements.txt
 ├── .gitignore
 ├── Dockerfile
@@ -209,6 +211,11 @@ This MVP stays focused on a simple and useful set of checks. Possible future upg
 - cloud configuration validation
 - more advanced dashboards and alerts
 
+## Documentation
+
+- [USER_MANUAL.md](USER_MANUAL.md) — explains what SentinelScanner is, what it does, how it works, and why it exists
+- [lab/README.md](lab/README.md) — explains how to use the local lab safely
+
 ## License
 
-This project is intended for educational and portfolio use.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
