@@ -67,7 +67,7 @@ cybersecurity-portfolio/
 ├── dashboard/
 │   └── app.py
 ├── database/
-│   ├── schema.sql
+│   └── schema.sql
 ├── tests/
 │   ├── test_phishing.py
 │   ├── test_sqli.py
@@ -131,6 +131,12 @@ streamlit run dashboard/app.py
 ```
 
 Then open the local URL shown in the terminal.
+
+## Project Video
+
+Watch the SentinelScanner project walkthrough and demonstration:
+
+[Watch the SentinelScanner Project Video](https://youtu.be/86D_shDYRfs)
 
 ## Safety and allowed use
 
